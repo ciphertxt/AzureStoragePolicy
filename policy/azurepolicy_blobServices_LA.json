@@ -118,7 +118,7 @@
                                     {
                                         "type": "Microsoft.Storage/storageAccounts/blobServices/providers/diagnosticSettings",
                                         "apiVersion": "2017-05-01-preview",
-                                        "name": "[concat(parameters('resourceName'), '/blobServices/microsoft.insights/', parameters('profileName'))]",
+                                        "name": "[concat(parameters('resourceName'), '/default/microsoft.insights/', parameters('profileName'))]",
                                         "location": "[parameters('location')]",
                                         "dependsOn": [],
                                         "properties": {
