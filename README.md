@@ -147,3 +147,52 @@ The response will be similar to the following:
   ]
 }
 ```
+
+The returned response can be used to construct the strings needed for input to your Azure Resource Manager template(s) or `az monitor diagnostic-settings create`.
+
+```json
+"metrics": [
+    {
+        "category": "Capacity",
+        "enabled": "true",
+        "retentionPolicy": {
+            "enabled": false,
+            "days": 0
+        }
+    },
+    {
+        "category": "Transaction",
+        "enabled": "true",
+        "retentionPolicy": {
+            "enabled": false,
+            "days": 0
+        }
+    }
+],
+"logs": [
+    {
+        "category": "StorageRead",
+        "enabled": true,
+        "retentionPolicy": {
+            "days": 0,
+            "enabled": false
+        }
+    },
+    {
+        "category": "StorageWrite",
+        "enabled": true,
+        "retentionPolicy": {
+            "days": 0,
+            "enabled": false
+        }
+    },
+    {
+        "category": "StorageDelete",
+        "enabled": true,
+        "retentionPolicy": {
+            "days": 0,
+            "enabled": false
+        }
+    }
+]
+```
