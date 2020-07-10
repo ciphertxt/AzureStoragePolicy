@@ -1,8 +1,8 @@
 {
     "properties": {
-        "displayName": "Deploy Diagnostic Settings for Azure Storage to Log Analytics workspace",
+        "displayName": "Deploy Diagnostic Settings for Azure Storage queues to Log Analytics workspace",
         "mode": "Indexed",
-        "description": "Deploys the diagnostic settings for Azure Storage to stream to a regional Log Analytics workspace when any Azure Storage which is missing this diagnostic settings is created or updated.",
+        "description": "Deploys the diagnostic settings for Azure Storage queues to stream to a regional Log Analytics workspace when any Azure Storage which is missing this diagnostic settings is created or updated.",
         "metadata": {
             "category": "Monitoring"
         },
