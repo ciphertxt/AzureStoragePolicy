@@ -203,3 +203,8 @@ The returned response can be used to construct the strings needed for input to y
     }
 ]
 ```
+
+A sample template which demonstrates setting multiple sinks (Log Analytics and Azure Storage) is available:
+
+- [azuredeploy.json](template/azuredeploy.json)
+- [azuredeploy.parameters.json](template/azuredeploy.parameters.json)

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+        "settingName": {
+            "value": "setbytemplate_multisink"
+        },
+        "storageAccountName": {
+            "value": "mystorageaccount"
+        },
+        "storageSinkName": {
+            "value": "mystorageaccountsink"
+        },
+        "workspaceId": {
+            "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MyResourceGroup/providers/microsoft.operationalinsights/workspaces/MyLogAnalyticsWorspace"
+        }
+    }
+}
