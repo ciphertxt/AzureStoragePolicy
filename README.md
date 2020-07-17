@@ -1,8 +1,13 @@
-# Azure Storage monitoring policy
+# Azure Storage monitoring and Azure Policy
 
 [Azure Storage logs in Azure Monitor](https://docs.microsoft.com/azure/storage/common/monitor-storage) is a new preview feature for Azure Storage logs which allows for a direct integration between your storage accounts and Log Analytics, Event Hubs, and archival of logs to another storage account utilizing standard diagnostic settings.
 
 A set of sample policies which enable for the enablement and collection of Azure Storage telemetry with Azure Monitor logs can be found [here](/policy/).
+
+A reference of the metrics and resources logs and their associated schema can be found at [Azure Storage monitoring data reference](https://docs.microsoft.com/azure/storage/common/monitor-storage-reference).
+
+- [Metrics](https://docs.microsoft.com/azure/storage/common/monitor-storage-reference#metrics)
+- [Resource logs](https://docs.microsoft.com/azure/storage/common/monitor-storage-reference#resource-logs-preview)
 
 ## Azure Storage resource types
 
@@ -14,7 +19,7 @@ Like many Azure services, you can enable diagnostic settings for Azure Storage u
 
 ![Diagnostic settings (preview) blade in the Azure portal](images/storagediagsettings.png)
 
-### Azure CLI and Azure PowerShell
+## Azure CLI and Azure PowerShell
 
 When creating diagnostic settings through the Azure CLI or Azure PowerShell, you will need the full resource ID to each storage type that the storage service surfaces which you would like to monitor. These can be found on the **Properties** blade of your storage account.
 
@@ -32,10 +37,10 @@ Get-AzResource -ResourceGroupName MyResourceGroup -ResourceName mystorageaccount
 
 Note that the output of each of these commands does not return the additional resource IDs for:
 
-* blobServices
-* fileServices
-* queueServices
-* tableServices
+- blobServices
+- fileServices
+- queueServices
+- tableServices
 
 Which are returned by the Azure portal.
 
@@ -51,7 +56,7 @@ TABLE_RESOURCE_ID="${ROOT_RESOURCE_ID}/tableServices/default"
 
 With these values and the values for the resource IDs for the destinations you would like to send our metrics and logs to such as another storage account or a Log Analytics workspace, you can use [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) or [Set-AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=azps-4.3.0) to create your diagnostic settings.
 
-### Azure Resource Manager templates
+## Azure Resource Manager templates
 
 When creating diagnostic settings through an Azure Resource Manager template, you will need to resolve the correct resource type for the `diagnosticSettings` you wish to enable.
 
@@ -65,7 +70,7 @@ They are as follows:
 | queueServices | `Microsoft.Storage/storageAccounts/queueServices/providers/diagnosticSettings` |
 | tableServices | `Microsoft.Storage/storageAccounts/tableServices/providers/diagnosticSettings` |
 
-### Discovering diagnostic settings categories
+## Discovering diagnostic settings categories
 
 Each Azure resource that supports diagnostic settings supports a per-service set of logs and and metrics that can be collected. This means that a service such as a virtual network (`Microsoft.Network/virtualNetworks`) may have a different set of telemetry provided by the service than Azure Storage (`Microsoft.Storage/storageAccounts`) and because storage has its root resource type in addition to the other resource types it presents (blobs, files, tables, and queues), this means that each resource type you want to collect telemetry for can have its own unique diagnostic setting categories.
 
